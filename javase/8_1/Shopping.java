@@ -68,7 +68,7 @@ public class Shopping{
 		System.out.println("====================================购物车=======================================");
 			System.out.println("编号\t"+"书名\t\t\t"+"价格\t"+"作者\t"+"出版社\t\t\t"+"购买数量");
 		for(Book book : map.keySet()){	
-			System.out.println(book.getId()+"\t"+book.getName()+"\t\t"+book.getPrice()+"\t"+book.getAuthor()+"\t"+book.getPublishing()+"\t\t"+map.get(book));
+			System.out.println(book.getId()+"\t"+book.getName()+"\t\t"+book.getPrice()+"\t"+book.getAuthor()+"\t"+book.getPublishing()+"\t\t"+book.getTempbuy());
 		}
 
 		System.out.println("=================================================================================");
@@ -83,7 +83,7 @@ public class Shopping{
 			case "updata":updata();
 				break;
 			case "out":select();break;
-			default :System.out.println("未能识别的指令请重新输入"); 
+			default :System.out.println("未能识别的指令请重新输入")gwcMenu(); 
 		}
 	}
 	//删除商品
@@ -111,6 +111,7 @@ public class Shopping{
 				int sl = sc.nextInt();
 				if(sl <= book.getTempbuy()){
 					System.out.println("修改成功");
+					book.setTempbuy(sl);
 					showGwc();return;
 				}else{
 					System.out.println("库存不足修改失败");
